@@ -2,7 +2,7 @@ package com.globalhealth.estagio.patientapi.dto;
 
 import com.globalhealth.estagio.patientapi.model.entity.DependenteEntity;
 
-public class DependenteDto extends Paciente {
+public class DependenteDto extends PacienteDto {
 
 	public static DependenteEntity toEntity(DependenteDto dto) {
 		DependenteEntity entity = new DependenteEntity();	
