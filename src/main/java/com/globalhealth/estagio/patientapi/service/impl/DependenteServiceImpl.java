@@ -32,6 +32,12 @@ public class DependenteServiceImpl implements DependenteService {
 		List<DependenteEntity> dependentes = dependenteRepository.findAll();
 		return dependentes.stream().map(depentende -> this.toDto(depentende)).collect(Collectors.toList());
 	}
+	
+	@Override
+	public DependenteDto findOneById(long id) {
+		DependenteEntity entity = dependenteRepository.findById(id).get();
+		return this.toDto(entity);
+	}
 
 	private DependenteEntity toEntity(DependenteDto dto) {
 		DependenteEntity entity = new DependenteEntity();	
@@ -49,4 +55,5 @@ public class DependenteServiceImpl implements DependenteService {
 		dto.setCodigoCartao(entity.getCodigoCartao());
 		return dto;
 	}
+
 }

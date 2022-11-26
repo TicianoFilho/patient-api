@@ -8,5 +8,6 @@ public interface DependenteService {
 
 	public DependenteDto create(DependenteDto dto);
 	public List<DependenteDto> findAll();
+	public DependenteDto findOneById(long id);
 	
 }
