@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import com.globalhealth.estagio.patientapi.dto.DependenteDto;
+import com.globalhealth.estagio.patientapi.exception.ResourceNotFoundException;
 import com.globalhealth.estagio.patientapi.model.entity.DependenteEntity;
 import com.globalhealth.estagio.patientapi.model.repository.DependenteRepository;
 import com.globalhealth.estagio.patientapi.service.DependenteService;
@@ -35,7 +36,7 @@ public class DependenteServiceImpl implements DependenteService {
 	
 	@Override
 	public DependenteDto findOneById(long id) {
-		DependenteEntity entity = dependenteRepository.findById(id).get();
+		DependenteEntity entity = dependenteRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Dependente", "id", id));
 		return this.toDto(entity);
 	}
 
