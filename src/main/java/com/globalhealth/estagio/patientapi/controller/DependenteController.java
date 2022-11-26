@@ -1,10 +1,13 @@
 package com.globalhealth.estagio.patientapi.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,5 +40,10 @@ public class DependenteController {
 		
 		response.setData(dependenteService.create(dto));
 		return new ResponseEntity<Response<DependenteDto>>(response, HttpStatus.CREATED);
+	}
+	
+	@GetMapping
+	public List<DependenteDto> findAll() {
+		return dependenteService.findAll();
 	}
 }

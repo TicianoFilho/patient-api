@@ -1,6 +1,7 @@
 package com.globalhealth.estagio.patientapi.service.impl;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -28,8 +29,8 @@ public class DependenteServiceImpl implements DependenteService {
 	
 	@Override
 	public List<DependenteDto> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<DependenteEntity> dependentes = dependenteRepository.findAll();
+		return dependentes.stream().map(depentende -> this.toDto(depentende)).collect(Collectors.toList());
 	}
 
 	private DependenteEntity toEntity(DependenteDto dto) {
