@@ -2,6 +2,7 @@ package com.globalhealth.estagio.patientapi.controller;
 
 import javax.validation.Valid;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,6 +36,6 @@ public class DependenteController {
 		}
 		
 		response.setData(dependenteService.create(dto));
-		return ResponseEntity.ok(response);
+		return new ResponseEntity<Response<DependenteDto>>(response, HttpStatus.CREATED);
 	}
 }

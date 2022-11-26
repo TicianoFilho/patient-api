@@ -14,6 +14,7 @@ public class DependenteDto extends PacienteDto {
 	
 	public static DependenteDto toDto(DependenteEntity entity) {
 		DependenteDto dto = new DependenteDto();
+		dto.setId(entity.getId());
 		dto.setNome(entity.getNome());
 		dto.setCpf(entity.getCpf());
 		dto.setCodigoCartao(entity.getCodigoCartao());
