@@ -4,6 +4,5 @@ import javax.persistence.Entity;
 
 @Entity(name = "dependente")
 public class DependenteEntity extends Paciente {
-	
 
 }
