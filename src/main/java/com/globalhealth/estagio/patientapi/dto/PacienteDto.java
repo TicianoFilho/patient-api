@@ -10,7 +10,7 @@ import lombok.Data;
 @Data
 public abstract class PacienteDto {
 
-	private Long id;
+	private long id;
 	
 	@NotBlank(message = "O nome não pode ser vazio.")
 	@Length(min = 5, max = 200, message = "O nome deve conter entre 5 a 200 caracteres.")
