@@ -1,7 +1,5 @@
 package com.globalhealth.estagio.patientapi.model.entity;
 
-import java.time.LocalDateTime;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -19,19 +17,19 @@ import lombok.NoArgsConstructor;
 @Table(name = "endereco")
 public class Endereco extends AppBaseEntity{
 
-	@Column
+	@Column(nullable = false)
 	private String rua;
 	
-	@Column
+	@Column(nullable = false)
 	private String cidade;
 	
-	@Column
+	@Column(nullable = false)
 	private String estado;
 	
-	@Column
+	@Column(nullable = false)
 	private String cep;
 	
-	@Column
+	@Column(nullable = false)
 	private String pais;
 
 }
