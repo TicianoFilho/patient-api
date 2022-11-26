@@ -1,5 +1,7 @@
 package com.globalhealth.estagio.patientapi.service.impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.globalhealth.estagio.patientapi.dto.DependenteDto;
@@ -18,10 +20,32 @@ public class DependenteServiceImpl implements DependenteService {
 
 	@Override
 	public DependenteDto create(DependenteDto dto) {
-		DependenteEntity dependente = DependenteDto.toEntity(dto);
+		DependenteEntity dependente = this.toEntity(dto);
 		DependenteEntity newDependente = dependenteRepository.save(dependente);
-		DependenteDto dependenteDto = DependenteDto.toDto(newDependente);
+		DependenteDto dependenteDto = this.toDto(newDependente);
 		return dependenteDto;
 	}
+	
+	@Override
+	public List<DependenteDto> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
+	private DependenteEntity toEntity(DependenteDto dto) {
+		DependenteEntity entity = new DependenteEntity();	
+		entity.setNome(dto.getNome());
+		entity.setCpf(dto.getCpf());
+		entity.setCodigoCartao(dto.getCodigoCartao());
+		return entity;
+	}
+	
+	private DependenteDto toDto(DependenteEntity entity) {
+		DependenteDto dto = new DependenteDto();
+		dto.setId(entity.getId());
+		dto.setNome(entity.getNome());
+		dto.setCpf(entity.getCpf());
+		dto.setCodigoCartao(entity.getCodigoCartao());
+		return dto;
+	}
 }
