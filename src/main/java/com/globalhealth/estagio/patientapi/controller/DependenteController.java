@@ -7,9 +7,11 @@ import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -51,5 +53,26 @@ public class DependenteController {
 	@GetMapping("/{id}")
 	public ResponseEntity<DependenteDto> findOneById(@PathVariable(name = "id") long id) {
 		return ResponseEntity.ok(dependenteService.findOneById(id));
+	}
+	
+	@PutMapping("/{id}")
+	public ResponseEntity<Response<DependenteDto>> update(@RequestBody DependenteDto dto, BindingResult result,
+			@PathVariable(name = "id") long id) {
+		
+		Response<DependenteDto> response = new Response<DependenteDto>();
+		
+		if (result.hasErrors()) {
+			result.getAllErrors().forEach(error -> response.getErrors().add(error.getDefaultMessage()));
+			return ResponseEntity.badRequest().body(response);
+		}
+		
+		response.setData(dependenteService.update(dto, id));
+		return new ResponseEntity<Response<DependenteDto>>(response, HttpStatus.OK);
+	}
+	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<String> delete(@PathVariable(name = "id") long id){
+		dependenteService.delete(id);
+		return new ResponseEntity<String>(String.format("Dependente de id %s excluído.", id), HttpStatus.OK);
 	}
 }

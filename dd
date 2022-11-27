@@ -1,0 +1,167 @@
+[33mcommit de532857d2c0689df67fef177580bade5a2a5121[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: TicianoFilho <ticianofilho@gmail.com>
+Date:   Sun Nov 27 08:28:57 2022 -0300
+
+    refactor: change entity and repository package path name
+
+[33mcommit 56e93ed23ce74c1bd6da7cd7202dc4f3ae47113b[m
+Author: TicianoFilho <ticianofilho@gmail.com>
+Date:   Sat Nov 26 18:09:52 2022 -0300
+
+    refactor: method findOneById in DependenteServiceImpl
+
+[33mcommit ad3a4cc982dcf2bc1bc99e1c72140b2b8f281aa1[m
+Author: TicianoFilho <ticianofilho@gmail.com>
+Date:   Sat Nov 26 17:55:11 2022 -0300
+
+    other: update project
+
+[33mcommit 0b974d4fb1c93dc36696600c5d40c057c68e061c[m
+Author: TicianoFilho <ticianofilho@gmail.com>
+Date:   Sat Nov 26 17:51:57 2022 -0300
+
+    feat: add findOneById method in DependenteController
+
+[33mcommit fbfb9862f4027e3af7726faedbf1e8ff61b40ce2[m
+Author: TicianoFilho <ticianofilho@gmail.com>
+Date:   Sat Nov 26 17:33:25 2022 -0300
+
+    feat: add findAll method in DependenteController
+
+[33mcommit 98a45524953faa0bddf1ac6a76596daab8d9d1f1[m
+Author: TicianoFilho <ticianofilho@gmail.com>
+Date:   Sat Nov 26 17:14:59 2022 -0300
+
+    refactor: move DependenteDto methods to DependenteServiceImpl
+
+[33mcommit 28c07b54658afab832ca65eca481c60827cfd71f[m
+Author: TicianoFilho <ticianofilho@gmail.com>
+Date:   Sat Nov 26 16:53:59 2022 -0300
+
+    fix: return 201 on create dependente and show the id from a new dependente
+
+[33mcommit 68c62bf29d7d4a3cad8fd92d93bee0b8ea1949da[m
+Author: TicianoFilho <ticianofilho@gmail.com>
+Date:   Sat Nov 26 16:17:25 2022 -0300
+
+    other: update project
+
+[33mcommit f32e4b2666228469e6d1ca994e69af0d62809497[m
+Author: TicianoFilho <ticianofilho@gmail.com>
+Date:   Sat Nov 26 16:16:39 2022 -0300
+
+    refactor: edit create method in DependenteController to get Errors from validation.
+
+[33mcommit f095c2d30e7308d599ee96d69cc8e0dc2e3ca46b[m
+Author: TicianoFilho <ticianofilho@gmail.com>
+Date:   Sat Nov 26 16:08:34 2022 -0300
+
+    refactor: add validation to DependenteDto
+
+[33mcommit 92b90cae4f7831da7078a8afe674952a44b7e35c[m
+Author: TicianoFilho <ticianofilho@gmail.com>
+Date:   Sat Nov 26 15:48:43 2022 -0300
+
+    refactor: update project
+
+[33mcommit fe3083ae151ad8653207c1661a1d4db5969b7858[m
+Author: TicianoFilho <ticianofilho@gmail.com>
+Date:   Sat Nov 26 15:47:48 2022 -0300
+
+    feat: add DependenteService DependenteServiceImpl and DependenteController with its create method
+
+[33mcommit e9dbfb3b7e6ca1295574675c751146caf82a254c[m
+Author: TicianoFilho <ticianofilho@gmail.com>
+Date:   Sat Nov 26 14:20:21 2022 -0300
+
+    feat: add Response class
+
+[33mcommit 7402f0e720797c140ddfe9e57b47e8f3bbdca436[m
+Author: TicianoFilho <ticianofilho@gmail.com>
+Date:   Sat Nov 26 14:12:21 2022 -0300
+
+    feat: add DependenteDto
+
+[33mcommit 276b571d005210cc5301bce1b8eb49aa01e02141[m
+Author: TicianoFilho <ticianofilho@gmail.com>
+Date:   Sat Nov 26 14:10:23 2022 -0300
+
+    style: update project
+
+[33mcommit ff306e526e13382b03e5255edd9deab4d93768d8[m
+Author: TicianoFilho <ticianofilho@gmail.com>
+Date:   Sat Nov 26 14:09:51 2022 -0300
+
+    feat: add abstract class paciente in dto package
+
+[33mcommit f0bf75a672d99fe3d94af9c088b4fb4a02074c9d[m
+Author: TicianoFilho <ticianofilho@gmail.com>
+Date:   Sat Nov 26 14:02:43 2022 -0300
+
+    feat: add DependenteRepository
+
+[33mcommit 79f3ab1abf8f57fdc85ef1af3998fe1d8da021d7[m
+Author: TicianoFilho <ticianofilho@gmail.com>
+Date:   Sat Nov 26 13:58:51 2022 -0300
+
+    feat: add DependenteEntity
+
+[33mcommit 3205d5d0c9a253cdcb06ab432ec849eabebff19c[m
+Author: TicianoFilho <ticianofilho@gmail.com>
+Date:   Sat Nov 26 13:53:11 2022 -0300
+
+    other: update project
+
+[33mcommit 37faa1c1031fa8dda7d621484f0b06ef8cb6ff34[m
+Author: TicianoFilho <ticianofilho@gmail.com>
+Date:   Sat Nov 26 13:52:13 2022 -0300
+
+    other: update project
+
+[33mcommit 4ddf7c59e7b9dbdbdfcaaa35285f74d7c6f54c0e[m
+Author: TicianoFilho <ticianofilho@gmail.com>
+Date:   Sat Nov 26 13:49:37 2022 -0300
+
+    feat: add Paciente class
+
+[33mcommit bdbd83abf4b82e2cb9b1f1c33e3c5b5941902a1e[m
+Author: TicianoFilho <ticianofilho@gmail.com>
+Date:   Sat Nov 26 13:47:35 2022 -0300
+
+    refactor: change some classes name
+
+[33mcommit adfc196dc5743c7dffb3125df13f7095a78491ee[m
+Author: TicianoFilho <ticianofilho@gmail.com>
+Date:   Sat Nov 26 13:27:15 2022 -0300
+
+    feat: add EnderecoDto class
+
+[33mcommit 40862bc62ca1be29ec49aa25f9af61d9ebc083f8[m
+Author: TicianoFilho <ticianofilho@gmail.com>
+Date:   Sat Nov 26 13:16:05 2022 -0300
+
+    feat: add ResourceNotFoundException class
+
+[33mcommit d1bb1c7c2da150fc33f2b9d1b5f337637169445a[m
+Author: TicianoFilho <ticianofilho@gmail.com>
+Date:   Sat Nov 26 12:57:58 2022 -0300
+
+    feat: add EnderecoRepository
+
+[33mcommit c83cb5a973230e45750d8d0a94458edac4830d1b[m
+Author: TicianoFilho <ticianofilho@gmail.com>
+Date:   Sat Nov 26 12:57:26 2022 -0300
+
+    refactor: update project
+
+[33mcommit ee5b2aea56ecf4bff057c511b5ced999ca16ef55[m
+Author: TicianoFilho <ticianofilho@gmail.com>
+Date:   Sat Nov 26 12:44:43 2022 -0300
+
+    feat: add the following entity classes AppBaseEntity and Endereco
+
+[33mcommit da949752edf1cb35086706697eb0672c00b1c77b[m
+Author: TicianoFilho <ticianofilho@gmail.com>
+Date:   Sat Nov 26 10:23:33 2022 -0300
+
+    first commit. All project structure was created and database connection was done in application.properties

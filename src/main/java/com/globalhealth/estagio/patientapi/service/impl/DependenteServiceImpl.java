@@ -39,6 +39,25 @@ public class DependenteServiceImpl implements DependenteService {
 		DependenteEntity entity = dependenteRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Dependente", "id", id));
 		return this.toDto(entity);
 	}
+	
+	@Override
+	public DependenteDto update(DependenteDto dto, long id) {
+		DependenteEntity entity = dependenteRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Dependente", "id", id));
+		
+		entity.setNome(dto.getNome());
+		entity.setCpf(dto.getCpf());
+		entity.setCodigoCartao(dto.getCodigoCartao());
+		entity.setActive(dto.isActive());
+		
+		DependenteEntity updatedDependente = dependenteRepository.save(entity);
+		return this.toDto(updatedDependente);
+	}
+	
+	@Override
+	public void delete(long id) {
+		DependenteEntity entity = dependenteRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Dependente", "id", id));
+		dependenteRepository.delete(entity);
+	}
 
 	private DependenteEntity toEntity(DependenteDto dto) {
 		DependenteEntity entity = new DependenteEntity();	
