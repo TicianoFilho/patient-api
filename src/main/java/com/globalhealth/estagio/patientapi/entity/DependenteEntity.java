@@ -8,7 +8,7 @@ import javax.persistence.ManyToOne;
 @Entity(name = "dependente")
 public class DependenteEntity extends Paciente {
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "titular_id")
 	private TitularEntity titular;
 }

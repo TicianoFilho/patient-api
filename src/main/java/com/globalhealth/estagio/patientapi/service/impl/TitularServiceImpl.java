@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.globalhealth.estagio.patientapi.dto.TitularDto;
 import com.globalhealth.estagio.patientapi.entity.TitularEntity;
@@ -23,9 +24,11 @@ public class TitularServiceImpl implements TitularService {
 	}
 
 	@Override
+	@Transactional
 	public TitularDto create(TitularDto dto) {
-		
-		return null;
+		TitularEntity entity = this.toEntity(dto);
+		TitularEntity newTitular = titularRepository.save(entity);
+		return this.toDto(newTitular);
 	}
 
 	@Override

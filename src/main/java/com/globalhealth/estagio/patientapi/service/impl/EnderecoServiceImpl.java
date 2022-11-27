@@ -3,6 +3,7 @@ package com.globalhealth.estagio.patientapi.service.impl;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import com.globalhealth.estagio.patientapi.dto.EnderecoDto;
@@ -14,9 +15,11 @@ import com.globalhealth.estagio.patientapi.service.EnderecoService;
 public class EnderecoServiceImpl implements EnderecoService {
 
 	private EnderecoRepository enderecoRepository;
+	private ModelMapper modelMapper;
 	
-	public EnderecoServiceImpl(EnderecoRepository enderecoRepository) {
+	public EnderecoServiceImpl(EnderecoRepository enderecoRepository, ModelMapper modelMapper) {
 		this.enderecoRepository = enderecoRepository;
+		this.modelMapper = modelMapper;
 	}
 
 	@Override
@@ -26,25 +29,12 @@ public class EnderecoServiceImpl implements EnderecoService {
 	}
 	
 	private EnderecoDto toDto(EnderecoEntity entity) {
-		EnderecoDto dto = new EnderecoDto();
-		dto.setId(entity.getId());
-		dto.setCep(entity.getCep());
-		dto.setRua(entity.getRua());
-		dto.setBairro(entity.getBairro());
-		dto.setCidade(entity.getCidade());
-		dto.setEstado(entity.getEstado());
-		dto.setPais(entity.getPais());
+		EnderecoDto dto = modelMapper.map(entity, EnderecoDto.class);
 		return dto;
 	}
 	
 	public EnderecoEntity toEntity(EnderecoDto dto) {
-		EnderecoEntity entity = new EnderecoEntity();
-		entity.setCep(dto.getCep());
-		entity.setRua(dto.getRua());
-		entity.setBairro(dto.getBairro());
-		entity.setCidade(dto.getCidade());
-		entity.setEstado(dto.getEstado());
-		entity.setPais(dto.getPais());
+		EnderecoEntity entity = modelMapper.map(dto, EnderecoEntity.class);
 		return entity;
 	}
 }

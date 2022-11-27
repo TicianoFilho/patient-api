@@ -4,19 +4,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.http.codec.cbor.Jackson2CborDecoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.globalhealth.estagio.patientapi.dto.DependenteDto;
-import com.globalhealth.estagio.patientapi.dto.EnderecoDto;
 import com.globalhealth.estagio.patientapi.entity.DependenteEntity;
-import com.globalhealth.estagio.patientapi.entity.EnderecoEntity;
 import com.globalhealth.estagio.patientapi.exception.ResourceNotFoundException;
 import com.globalhealth.estagio.patientapi.repository.DependenteRepository;
-import com.globalhealth.estagio.patientapi.repository.EnderecoRepository;
 import com.globalhealth.estagio.patientapi.service.DependenteService;
-import com.globalhealth.estagio.patientapi.service.EnderecoService;
 
 @Service
 public class DependenteServiceImpl implements DependenteService {
@@ -31,13 +26,10 @@ public class DependenteServiceImpl implements DependenteService {
 
 	@Override
 	@Transactional
-	public DependenteDto create(DependenteDto dto) {
-		
-		DependenteEntity dependente = this.toEntity(dto);
-		
-		DependenteEntity newDependente = dependenteRepository.save(dependente);
-		DependenteDto dependenteDto = this.toDto(newDependente);
-		return dependenteDto;
+	public DependenteDto create(DependenteDto dto) {		
+		DependenteEntity dependente = this.toEntity(dto);	
+		DependenteEntity newDependente = dependenteRepository.save(dependente);		
+		return this.toDto(newDependente);
 	}
 	
 	@Override
