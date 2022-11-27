@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.globalhealth.estagio.patientapi.dto.TitularDto;
 import com.globalhealth.estagio.patientapi.entity.TitularEntity;
+import com.globalhealth.estagio.patientapi.exception.ResourceNotFoundException;
 import com.globalhealth.estagio.patientapi.repository.TitularRepository;
 import com.globalhealth.estagio.patientapi.service.TitularService;
 
@@ -39,8 +40,8 @@ public class TitularServiceImpl implements TitularService {
 
 	@Override
 	public TitularDto findOneById(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		TitularEntity titular = titularRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("id", "id", id));
+		return this.toDto(titular);
 	}
 
 	@Override
