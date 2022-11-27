@@ -3,26 +3,39 @@ package com.globalhealth.estagio.patientapi.service.impl;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.http.codec.cbor.Jackson2CborDecoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.globalhealth.estagio.patientapi.dto.DependenteDto;
+import com.globalhealth.estagio.patientapi.dto.EnderecoDto;
 import com.globalhealth.estagio.patientapi.entity.DependenteEntity;
+import com.globalhealth.estagio.patientapi.entity.EnderecoEntity;
 import com.globalhealth.estagio.patientapi.exception.ResourceNotFoundException;
 import com.globalhealth.estagio.patientapi.repository.DependenteRepository;
+import com.globalhealth.estagio.patientapi.repository.EnderecoRepository;
 import com.globalhealth.estagio.patientapi.service.DependenteService;
+import com.globalhealth.estagio.patientapi.service.EnderecoService;
 
 @Service
 public class DependenteServiceImpl implements DependenteService {
-
-	private DependenteRepository dependenteRepository;
 	
-	public DependenteServiceImpl(DependenteRepository dependenteRepository) {
+	private DependenteRepository dependenteRepository;
+	private EnderecoService enderecoService;
+	
+	public DependenteServiceImpl(DependenteRepository dependenteRepository, EnderecoService endereService) {
 		this.dependenteRepository = dependenteRepository;
+		this.enderecoService = endereService;
 	}
 
 	@Override
+	@Transactional
 	public DependenteDto create(DependenteDto dto) {
+		
 		DependenteEntity dependente = this.toEntity(dto);
+		
+		System.out.println("DependenteEntity => " + dependente);
+		
 		DependenteEntity newDependente = dependenteRepository.save(dependente);
 		DependenteDto dependenteDto = this.toDto(newDependente);
 		return dependenteDto;
@@ -64,6 +77,7 @@ public class DependenteServiceImpl implements DependenteService {
 		entity.setNome(dto.getNome());
 		entity.setCpf(dto.getCpf());
 		entity.setCodigoCartao(dto.getCodigoCartao());
+		entity.setEndereco(this.toEnderecoEntity(dto.getEndereco()));
 		return entity;
 	}
 	
@@ -74,6 +88,18 @@ public class DependenteServiceImpl implements DependenteService {
 		dto.setCpf(entity.getCpf());
 		dto.setCodigoCartao(entity.getCodigoCartao());
 		return dto;
+	}
+	
+	public EnderecoEntity toEnderecoEntity(EnderecoDto dto) {
+		EnderecoEntity entity = new EnderecoEntity();
+		//entity.setId(dto.getId());
+		entity.setCep(dto.getCep());
+		entity.setRua(dto.getRua());
+		entity.setBairro(dto.getBairro());
+		entity.setCidade(dto.getCidade());
+		entity.setEstado(dto.getEstado());
+		entity.setPais(dto.getPais());
+		return entity;
 	}
 
 }

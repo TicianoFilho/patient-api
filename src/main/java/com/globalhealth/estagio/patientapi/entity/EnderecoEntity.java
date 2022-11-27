@@ -2,6 +2,8 @@ package com.globalhealth.estagio.patientapi.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -21,6 +23,9 @@ public class EnderecoEntity extends AppBaseEntityClass{
 	private String rua;
 	
 	@Column(nullable = false)
+	private String bairro;
+	
+	@Column(nullable = false)
 	private String cidade;
 	
 	@Column(nullable = false)
@@ -32,4 +37,6 @@ public class EnderecoEntity extends AppBaseEntityClass{
 	@Column(nullable = false)
 	private String pais;
 
+	@OneToOne(mappedBy = "endereco")
+	DependenteEntity dependente;
 }

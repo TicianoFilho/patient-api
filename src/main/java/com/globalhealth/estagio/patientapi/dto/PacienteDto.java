@@ -25,4 +25,5 @@ public abstract class PacienteDto {
 	
 	private boolean active;
 	
+	private EnderecoDto endereco;
 }
