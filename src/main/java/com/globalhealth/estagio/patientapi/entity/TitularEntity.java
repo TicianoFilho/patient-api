@@ -2,6 +2,7 @@ package com.globalhealth.estagio.patientapi.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
@@ -17,6 +18,6 @@ import lombok.NoArgsConstructor;
 @Entity(name = "titular")
 public class TitularEntity extends Paciente {
 
-	@OneToMany(mappedBy = "titular")
+	@OneToMany(mappedBy = "titular", cascade = CascadeType.ALL)
 	private List<DependenteEntity> dependentes;
 }

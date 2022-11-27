@@ -26,7 +26,7 @@ public class TitularServiceImpl implements TitularService {
 
 	@Override
 	@Transactional
-	public TitularDto create(TitularDto dto) {
+	public TitularDto create(TitularDto dto) { // TODO Não está salvando o id do titular na tabala de dependente.
 		TitularEntity entity = this.toEntity(dto);
 		TitularEntity newTitular = titularRepository.save(entity);
 		return this.toDto(newTitular);
