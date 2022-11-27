@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,6 +35,11 @@ public class TitularController {
 		return titularService.findAll();
 	}
 	
+	@GetMapping("/{id}")
+	public ResponseEntity<TitularDto> findOneById(@PathVariable(name = "id") long id) {
+		return ResponseEntity.ok(titularService.findOneById(id));
+	}
+	
 	@PostMapping
 	public ResponseEntity<Response<TitularDto>> create(@Valid @RequestBody TitularDto dto, BindingResult result) {
 		Response<TitularDto> response = new Response<TitularDto>();
@@ -49,8 +55,20 @@ public class TitularController {
 		return new ResponseEntity<Response<TitularDto>>(response, HttpStatus.CREATED);
 	}
 	
-	@GetMapping("/{id}")
-	public ResponseEntity<TitularDto> findOneById(@PathVariable(name = "id") long id) {
-		return ResponseEntity.ok(titularService.findOneById(id));
+	@PutMapping("/{id}")
+	public ResponseEntity<Response<TitularDto>> update(@Valid @RequestBody TitularDto dto, BindingResult result,
+			@PathVariable(name = "id") long id) {
+		Response<TitularDto> response = new Response<TitularDto>();
+		
+		if (result.hasErrors()) {
+			result.getAllErrors().forEach(err -> response.getErrors().add(err.getDefaultMessage()));
+			return ResponseEntity.badRequest().body(response);
+		}
+		
+		TitularDto newTitular = titularService.update(dto,id);
+		response.setData(newTitular);
+		
+		return new ResponseEntity<Response<TitularDto>>(response, HttpStatus.OK);
 	}
+	
 }

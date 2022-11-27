@@ -46,8 +46,10 @@ public class TitularServiceImpl implements TitularService {
 
 	@Override
 	public TitularDto update(TitularDto dto, long id) {
-		// TODO Auto-generated method stub
-		return null;
+		TitularEntity titular = titularRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("id", "id", id));		
+		dto.setId(titular.getId());
+		titular = this.toEntity(dto);
+		return this.toDto(titularRepository.save(titular));
 	}
 
 	@Override
