@@ -80,14 +80,5 @@ public class DependenteServiceImpl implements DependenteService {
 		DependenteDto dto = modelMapper.map(entity, DependenteDto.class);
 		return dto;
 	}
-	
-	public EnderecoEntity toEnderecoEntity(EnderecoDto dto) {
-		EnderecoEntity entity = modelMapper.map(dto, EnderecoEntity.class);
-		return entity;
-	}
-	public EnderecoDto toEnderecoDto(EnderecoEntity entity) {
-		EnderecoDto dto = modelMapper.map(entity, EnderecoDto.class);
-		return dto;
-	}
 
 }

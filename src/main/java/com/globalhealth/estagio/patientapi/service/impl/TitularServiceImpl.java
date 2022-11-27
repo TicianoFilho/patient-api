@@ -6,10 +6,8 @@ import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import com.globalhealth.estagio.patientapi.dto.EnderecoDto;
 import com.globalhealth.estagio.patientapi.dto.TitularDto;
 import com.globalhealth.estagio.patientapi.entity.TitularEntity;
-import com.globalhealth.estagio.patientapi.entity.EnderecoEntity;
 import com.globalhealth.estagio.patientapi.repository.TitularRepository;
 import com.globalhealth.estagio.patientapi.service.TitularService;
 
@@ -64,13 +62,4 @@ public class TitularServiceImpl implements TitularService {
 		return dto;
 	}
 	
-	public EnderecoEntity toEnderecoEntity(EnderecoDto dto) {
-		EnderecoEntity entity = modelMapper.map(dto, EnderecoEntity.class);
-		return entity;
-	}
-	public EnderecoDto toEnderecoDto(EnderecoEntity entity) {
-		EnderecoDto dto = modelMapper.map(entity, EnderecoDto.class);
-		return dto;
-	}
-
 }
