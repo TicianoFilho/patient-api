@@ -85,12 +85,12 @@ public class DependenteServiceImpl implements DependenteService {
 		dto.setNome(entity.getNome());
 		dto.setCpf(entity.getCpf());
 		dto.setCodigoCartao(entity.getCodigoCartao());
+		dto.setEndereco(this.toEnderecoDto(entity.getEndereco()));
 		return dto;
 	}
 	
 	public EnderecoEntity toEnderecoEntity(EnderecoDto dto) {
 		EnderecoEntity entity = new EnderecoEntity();
-		//entity.setId(dto.getId());
 		entity.setCep(dto.getCep());
 		entity.setRua(dto.getRua());
 		entity.setBairro(dto.getBairro());
@@ -98,6 +98,17 @@ public class DependenteServiceImpl implements DependenteService {
 		entity.setEstado(dto.getEstado());
 		entity.setPais(dto.getPais());
 		return entity;
+	}
+	public EnderecoDto toEnderecoDto(EnderecoEntity entity) {
+		EnderecoDto dto = new EnderecoDto();
+		dto.setId(entity.getId());
+		dto.setCep(entity.getCep());
+		dto.setRua(entity.getRua());
+		dto.setBairro(entity.getBairro());
+		dto.setCidade(entity.getCidade());
+		dto.setEstado(entity.getEstado());
+		dto.setPais(entity.getPais());
+		return dto;
 	}
 
 }
