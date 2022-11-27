@@ -21,11 +21,9 @@ import com.globalhealth.estagio.patientapi.service.EnderecoService;
 public class DependenteServiceImpl implements DependenteService {
 	
 	private DependenteRepository dependenteRepository;
-	private EnderecoService enderecoService;
 	
-	public DependenteServiceImpl(DependenteRepository dependenteRepository, EnderecoService endereService) {
+	public DependenteServiceImpl(DependenteRepository dependenteRepository) {
 		this.dependenteRepository = dependenteRepository;
-		this.enderecoService = endereService;
 	}
 
 	@Override
