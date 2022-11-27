@@ -3,6 +3,7 @@ package com.globalhealth.estagio.patientapi.service.impl;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.http.codec.cbor.Jackson2CborDecoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,9 +22,11 @@ import com.globalhealth.estagio.patientapi.service.EnderecoService;
 public class DependenteServiceImpl implements DependenteService {
 	
 	private DependenteRepository dependenteRepository;
+	private ModelMapper modelMapper;
 	
-	public DependenteServiceImpl(DependenteRepository dependenteRepository) {
+	public DependenteServiceImpl(DependenteRepository dependenteRepository, ModelMapper modelMapper) {
 		this.dependenteRepository = dependenteRepository;
+		this.modelMapper = modelMapper;
 	}
 
 	@Override
@@ -69,43 +72,21 @@ public class DependenteServiceImpl implements DependenteService {
 	}
 
 	private DependenteEntity toEntity(DependenteDto dto) {
-		DependenteEntity entity = new DependenteEntity();	
-		entity.setNome(dto.getNome());
-		entity.setCpf(dto.getCpf());
-		entity.setCodigoCartao(dto.getCodigoCartao());
-		entity.setEndereco(this.toEnderecoEntity(dto.getEndereco()));
+		DependenteEntity entity = modelMapper.map(dto, DependenteEntity.class);
 		return entity;
 	}
 	
 	private DependenteDto toDto(DependenteEntity entity) {
-		DependenteDto dto = new DependenteDto();
-		dto.setId(entity.getId());
-		dto.setNome(entity.getNome());
-		dto.setCpf(entity.getCpf());
-		dto.setCodigoCartao(entity.getCodigoCartao());
-		dto.setEndereco(this.toEnderecoDto(entity.getEndereco()));
+		DependenteDto dto = modelMapper.map(entity, DependenteDto.class);
 		return dto;
 	}
 	
 	public EnderecoEntity toEnderecoEntity(EnderecoDto dto) {
-		EnderecoEntity entity = new EnderecoEntity();
-		entity.setCep(dto.getCep());
-		entity.setRua(dto.getRua());
-		entity.setBairro(dto.getBairro());
-		entity.setCidade(dto.getCidade());
-		entity.setEstado(dto.getEstado());
-		entity.setPais(dto.getPais());
+		EnderecoEntity entity = modelMapper.map(dto, EnderecoEntity.class);
 		return entity;
 	}
 	public EnderecoDto toEnderecoDto(EnderecoEntity entity) {
-		EnderecoDto dto = new EnderecoDto();
-		dto.setId(entity.getId());
-		dto.setCep(entity.getCep());
-		dto.setRua(entity.getRua());
-		dto.setBairro(entity.getBairro());
-		dto.setCidade(entity.getCidade());
-		dto.setEstado(entity.getEstado());
-		dto.setPais(entity.getPais());
+		EnderecoDto dto = modelMapper.map(entity, EnderecoDto.class);
 		return dto;
 	}
 
