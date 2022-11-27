@@ -54,8 +54,8 @@ public class TitularServiceImpl implements TitularService {
 
 	@Override
 	public void delete(long id) {
-		// TODO Auto-generated method stub
-		
+		TitularEntity titular = titularRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("id", "id", id));
+		titularRepository.delete(titular);
 	}
 	
 	private TitularEntity toEntity(TitularDto dto) {
