@@ -48,6 +48,7 @@ public class DependenteServiceImpl implements DependenteService {
 	public DependenteDto update(DependenteDto dto, long id) {
 		DependenteEntity entity = dependenteRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Dependente", "id", id));
 		
+		dto.setId(entity.getId());
 		entity = this.toEntity(dto);
 		
 		DependenteEntity updatedDependente = dependenteRepository.save(entity);
