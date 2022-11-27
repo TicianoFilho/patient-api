@@ -1,4 +1,4 @@
-package com.globalhealth.estagio.patientapi.model.entity;
+package com.globalhealth.estagio.patientapi.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -6,9 +6,9 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import com.globalhealth.estagio.patientapi.dto.DependenteDto;
+import com.globalhealth.estagio.patientapi.entity.DependenteEntity;
 import com.globalhealth.estagio.patientapi.exception.ResourceNotFoundException;
-import com.globalhealth.estagio.patientapi.model.entity.DependenteEntity;
-import com.globalhealth.estagio.patientapi.model.repository.DependenteRepository;
+import com.globalhealth.estagio.patientapi.repository.DependenteRepository;
 import com.globalhealth.estagio.patientapi.service.DependenteService;
 
 @Service
