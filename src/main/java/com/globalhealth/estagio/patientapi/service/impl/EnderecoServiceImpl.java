@@ -25,13 +25,6 @@ public class EnderecoServiceImpl implements EnderecoService {
 		return enderecos.stream().map(endereco -> this.toDto(endereco)).collect(Collectors.toList());
 	}
 	
-	@Override
-	public EnderecoDto create(EnderecoDto dto) {
-		EnderecoEntity entity = this.toEntity(dto);
-		EnderecoEntity newEndereco = enderecoRepository.save(entity);
-		return this.toDto(newEndereco);
-	}
-	
 	private EnderecoDto toDto(EnderecoEntity entity) {
 		EnderecoDto dto = new EnderecoDto();
 		dto.setId(entity.getId());

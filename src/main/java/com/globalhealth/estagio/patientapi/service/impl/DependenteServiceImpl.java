@@ -32,8 +32,6 @@ public class DependenteServiceImpl implements DependenteService {
 		
 		DependenteEntity dependente = this.toEntity(dto);
 		
-		System.out.println("DependenteEntity => " + dependente);
-		
 		DependenteEntity newDependente = dependenteRepository.save(dependente);
 		DependenteDto dependenteDto = this.toDto(newDependente);
 		return dependenteDto;
