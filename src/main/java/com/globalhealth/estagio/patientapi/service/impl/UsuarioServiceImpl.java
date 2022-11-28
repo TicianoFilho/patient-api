@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.globalhealth.estagio.patientapi.dto.UsuarioDto;
 import com.globalhealth.estagio.patientapi.entity.UsuarioEntity;
@@ -33,6 +34,13 @@ public class UsuarioServiceImpl implements UsuarioService {
 	public UsuarioDto findByUsuario(String login) {
 		UsuarioEntity entity = usuarioRepository.findByUsuario(login).orElseThrow(() -> new ResourceNotFoundException("Usuário", "login"));
 		return this.toDto(entity); 
+	}
+	
+	@Override
+	@Transactional
+	public UsuarioDto create(UsuarioDto usuario) {
+		UsuarioEntity entity = this.toEntity(usuario);
+		return this.toDto(usuarioRepository.save(entity));
 	}
 	
 	private UsuarioEntity toEntity(UsuarioDto dto) {

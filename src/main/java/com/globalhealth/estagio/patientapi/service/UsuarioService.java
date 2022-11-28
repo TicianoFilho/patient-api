@@ -8,4 +8,5 @@ public interface UsuarioService {
 	
 	public UsuarioDto findByUsuario(String login);
 	public List<UsuarioDto> findAll();
+	public UsuarioDto create(UsuarioDto usuario);
 }
