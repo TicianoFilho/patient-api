@@ -3,9 +3,10 @@ package com.globalhealth.estagio.patientapi;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 
-@SpringBootApplication
+@SpringBootApplication(exclude = SecurityAutoConfiguration.class)                    // to disable Spring security ask login/password automatically.
 public class PatientApiApplication {
 
 	@Bean
