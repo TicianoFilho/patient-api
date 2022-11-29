@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,10 +23,11 @@ import com.globalhealth.estagio.patientapi.service.UsuarioService;
 public class UsuarioController {
 
 	private UsuarioService usuarioService;
+	private PasswordEncoder encoder;
 	
-	public UsuarioController(UsuarioService usuarioService) {
-		super();
+	public UsuarioController(UsuarioService usuarioService, PasswordEncoder encoder) {
 		this.usuarioService = usuarioService;
+		this.encoder = encoder;
 	}
 
 	@GetMapping
@@ -42,6 +44,8 @@ public class UsuarioController {
 			result.getAllErrors().forEach(error -> response.getErrors().add(error.getDefaultMessage()));
 			return ResponseEntity.badRequest().body(response);
 		}
+		
+		usuario.setSenha(encoder.encode(usuario.getSenha()));
 		
 		response.setData(usuarioService.create(usuario));
 		return new ResponseEntity<Response<UsuarioDto>>(response, HttpStatus.CREATED); 
