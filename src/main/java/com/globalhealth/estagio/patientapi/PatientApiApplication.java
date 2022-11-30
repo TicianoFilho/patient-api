@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-@SpringBootApplication(exclude = SecurityAutoConfiguration.class)                    // to disable Spring security ask login/password automatically.
+@SpringBootApplication
 public class PatientApiApplication {
 
 	@Bean

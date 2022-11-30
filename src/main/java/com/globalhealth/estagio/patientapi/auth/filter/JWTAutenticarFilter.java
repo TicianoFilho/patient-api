@@ -26,8 +26,7 @@ public class JWTAutenticarFilter extends UsernamePasswordAuthenticationFilter {
 	
 	public static final int TOKEN_EXPIRACAO = 600_000;
 	
-	@Value(value = "${jwt.assinatura}")
-	public static String TOKEN_ASSINATURA;
+	public static final String TOKEN_ASSINATURA = "b925e02b-5b12-4c90-9a9c-688db300ebd2";
 	
 	private final AuthenticationManager authenticationManager;
 
@@ -59,6 +58,7 @@ public class JWTAutenticarFilter extends UsernamePasswordAuthenticationFilter {
 
 		DetalheUsuarioData usuarioData = (DetalheUsuarioData) authResult.getPrincipal();
 		
+		System.out.println("vai assinar agora: " + TOKEN_ASSINATURA);
 		String token = JWT.create()
 				.withSubject(usuarioData.getUsername())
 				.withExpiresAt(new Date(System.currentTimeMillis() + TOKEN_EXPIRACAO))
